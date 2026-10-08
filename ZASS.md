@@ -1247,6 +1247,8 @@ Use experiments when discussion alone cannot resolve a decision. If `ACTION_PLAN
 
 # 18. ARCHITECTURE READINESS
 
+**OPSLOOP DA-T12 project record (2026-10-08):** [PRE-ARCH Candidate v0.5](PRE_ARCH.md) is **CONDITIONALLY APPROVED by Project Owner** (DA-T11): three logical capabilities, five contracts (AAC-01/ERC-01/ATC-01/RC-01/SUC-01), T2-A human-controlled authoritative writes, and PA-01–PA-07 acceptance scenarios. This is a PRE-ARCH candidate baseline only; **NOT ARCHITECTURE CONFIRMED** and **NO CODING AUTHORIZATION**. D-001/L-001 and D-002/L-002 remain the only relevant LOCKED decisions; implementation IM-01–IM-12 stays OPEN. Do not infer a readiness percentage or executable test pass from this approval.
+
 `ZERO → ARCHITECTURE` measures how mature an idea is for architecture. It does **not** measure coding progress, execution progress, or total project completion.
 
 Use this transparent score:
