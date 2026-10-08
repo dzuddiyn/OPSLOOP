@@ -1096,14 +1096,14 @@ Every important architectural decision must appear here.
 
 ## D-002 — Operational Authority Invariants & Conflict Resolution Rules
 
-**Status:** REVISED PROPOSAL — NOT LOCKED
+**Status:** LOCKED
 **Revision approved by:** Project Owner, 2026-10-08 (Challenge Round 2)
-**Approval scope:** Approval of the proposed revision only. Explicitly NOT approval to LOCK, implement, or begin Draft Architecture.
+**Approval scope:** Revision approved on 2026-10-08; separate FINAL LOCK expressly approved by Project Owner on 2026-10-08. Principle-level authority rules only. No implementation or Draft Architecture authorization.
 **Depends on:** D-001 / L-001 (LOCKED). Does not amend D-001.
 
 **Problem:** Prevent contradictory monitoring, OPSLOOP, GitHub and AI assertions from silently becoming authoritative operational facts or conflicting production commands.
 
-**Proposed invariants (not authoritative until separately LOCKED):**
+**LOCKED authority invariants:**
 - **INV-01 — Explicit domain authority:** Every authoritative operational field/decision has an identified authority owner; external source domains are not silently absorbed.
 - **INV-02 — Evidence is not interpretation:** Observations, alerts, hypotheses, declarations and findings retain distinct epistemic types.
 - **INV-03 — Unknown remains unknown:** Missing, stale, partial or inaccessible evidence cannot be treated as positive healthy evidence.
@@ -1119,7 +1119,7 @@ Every important architectural decision must appear here.
 - **INV-13 — Emergency authority bounded and retrospectively accountable:** Pre-established/scoped legitimate emergency authority or lawful manual recovery procedure; constrain action to need, capture actual timestamps and reasons when feasible, and review afterwards. No blanket bypass or autonomous AI privilege escalation. OPSLOOP outage must not prevent otherwise authorized emergency recovery.
 - **INV-14 — Conflicting commands require one effective decision authority and coordination:** Distinguish opinion, decision and execution authority; contain incompatible concurrent changes where safe/feasible, with urgent legitimate recovery preserved.
 
-**Revised proposed conflict protocol:**
+**LOCKED conflict resolution protocol:**
 1. **DETECT:** Identify contradictory evidence, decisions, permissions or commands.
 2. **PRESERVE:** Retain both claims, provenance, observed/recorded times and original context.
 3. **CLASSIFY:** Distinguish evidence, authority, freshness, scope and execution conflicts.
@@ -1128,7 +1128,7 @@ Every important architectural decision must appear here.
 6. **RESOLVE / ESCALATE:** Record actor, grounds and disposition; retain unresolved/unknown where evidence or authority is insufficient.
 7. **RECONCILE:** Update derived state without rewriting historical evidence or remote source authority.
 
-**Protected transitions proposed:** Suspected→declared incident; suspected cause→confirmed finding; mitigation attempted→effective; degraded→recovered; responding→resolved; corrective work→verified complete; engineering done→operationally verified; commitment draft→effective; conflict open→resolved. Exact state enums and enforcement are not yet selected.
+**Protected transition requirements (LOCKED principles, not a final state machine):** Suspected→declared incident; suspected cause→confirmed finding; mitigation attempted→effective; degraded→recovered; responding→resolved; corrective work→verified complete; engineering done→operationally verified; commitment draft→effective; conflict open→resolved. Exact state enums and enforcement are not yet selected.
 
 **Challenge findings / lineage:**
 - Discovery Task 4: six minimal concepts, provenance and three state dimensions; authority alternatives.
@@ -1139,7 +1139,9 @@ Every important architectural decision must appear here.
 
 **Trade-offs / outstanding challenges:** Avoid rigid enterprise roles and forensic burden for solo users. Details of role/delegation checks, offline reconciliation, authority succession, concurrent execution coordination, evidence retention/freshness thresholds, and integration fallbacks stay OPEN. This proposal is not a final state machine, storage schema or permission implementation.
 
-**Implementation authorization:** NONE. No code, technology choice, architecture approval or LOCK is implied by this revision.
+**Final LOCK receipt:** Explicit owner FINAL LOCK authorization on 2026-10-08. Source decision D-002; authoritative record L-002.
+
+**Implementation authorization:** NONE. Storage, exact state enums, runtime permission enforcement, offline reconciliation, freshness thresholds, concurrency coordination and integrations remain OPEN. No code, technical-stack choice or architecture confirmation authorized.
 
 ---
 
@@ -1164,6 +1166,30 @@ Architecture MUST follow these decisions.
 **Supersedes:** None
 
 **Implementation authorization:** None. No code, architecture confirmation or technical-stack selection is authorized by this lock.
+
+---
+
+## L-002 — Operational Authority Invariants & Conflict Resolution Rules
+
+**Source Decision:** D-002
+
+**Decision:** INV-01 through INV-14, the seven-stage DETECT → PRESERVE → CLASSIFY → CONTAIN → EVALUATE → RESOLVE/ESCALATE → RECONCILE protocol, and evidence/authorization gates for protected operational transitions are LOCKED as principles, precisely as recorded under D-002.
+
+**Authority boundary:** Extends D-001/L-001 federated-authority rules without superseding them. No autonomous AI promotion of operational hypotheses or unverified recovery. Time-scoped, revocable authority; context-dependent evidence validity; bounded, retrospectively reviewed emergency action; coordination for conflicting commands.
+
+**Lineage:** Discovery Task 4 → D-001/L-001 → Decisions Task 2 original INV-01–INV-10 proposal → Challenge Round 2 (authority revocation, evidence decay, emergency recovery, concurrent operator decisions) → owner-approved revision INV-11–INV-14 and CONTAIN step → separate FINAL LOCK approval.
+
+**Reason:** Prevent split-brain operational truth and incompatible action while keeping incident response practical for solo operators and small teams.
+
+**Locked by:** Project Owner
+
+**Date:** 2026-10-08
+
+**Supersedes:** None
+
+**Open implementation questions:** Exact authorization/delegation and succession, evidence retention/revalidation, state enums, data storage, offline reconciliation, concurrency gates, integration mechanisms and user experience. These remain OPEN and require architecture design/challenge.
+
+**Implementation authorization:** None. No code or architecture confirmation permitted by this record.
 
 ---
 
