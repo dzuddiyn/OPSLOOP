@@ -703,7 +703,7 @@ After `ARCHITECTURE CONFIRMED`, do **not** blindly continue the PRE-ARCH evidenc
 
 ACTION_PLAN remains planning/execution authority only. It may request PRE-ARCH review but cannot decide architecture or change a LOCKED decision.
 
-Use the shared contract: [`docs/ZASS_ARCHITECTURE_TO_EXECUTION_STANDARD.md`](docs/ZASS_ARCHITECTURE_TO_EXECUTION_STANDARD.md).
+Use the shared contract: [`docs/ZASS_ARCHITECTURE_TO_EXECUTION_STANDARD.md`](https://github.com/dzuddiyn/ZASS-Zero-to-Architecture-Structured-Sprint/blob/main/docs/ZASS_ARCHITECTURE_TO_EXECUTION_STANDARD.md).
 
 ---
 
