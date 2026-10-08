@@ -1052,27 +1052,45 @@ Use evidence, constraints, and project-owner decisions.
 
 Every important architectural decision must appear here.
 
-## D-001 — [Decision title]
+## D-001 — OPSLOOP Product Foundation & Authority Boundaries
 
-**Status:** CANDIDATE
+**Status:** LOCKED
+**Owner approval:** Explicit approval by Project Owner on 2026-10-08.
+**Decision scope:** Product and authority principles only; no technical architecture or implementation selected.
 
-**Problem:**
+**Problem:** Define a lightweight post-production operational product and decide which information OPSLOOP may authoritatively own without duplicating monitoring, engineering tooling, CI/CD, or the ZASS development lifecycle.
 
 **Options considered:**
+- A — Git/Markdown as comprehensive operational authority: portable and low overhead, but poorly suited to fast-changing live state and concurrent response.
+- B — Dedicated structured operational store: stronger transactions and concurrency, but introduces infrastructure and maintenance overhead too early.
+- C — Federated authority: each system owns its domain; OPSLOOP owns explicit operational decisions and verified operational meaning. Selected, with local durable authority rather than link-only aggregation.
 
 **Decision:**
+1. **Product foundation:** Hybrid Lightweight Workspace, optimized first for a solo builder/operator, able to scale to small technical and AI-assisted teams. Incident, service health, maintenance, change risk, commitments, and learning are related workflows rather than mandated standalone modules.
+2. **Authority foundation:** Federated Authority with explicitly assigned domain ownership. OPSLOOP is authoritative for its authorized incident declarations/severity decisions, curated operational timeline, operator decisions, approved operational findings, verification outcomes, and durable operational learning. Source monitoring owns raw telemetry; code/architecture and engineering implementation remain with development tools; deployment execution remains with deployment tools.
+3. **Service and commitments:** OPSLOOP must maintain clear service/owner context and record the applicable approved service-level expectations with provenance and effective version. External registries or commitment owners may remain authoritative; OPSLOOP cannot silently revise them.
+4. **Corrective work:** Each corrective action must have one designated status authority (OPSLOOP or an external issue tracker); avoid duplicate completion authorities. Engineering task closure is not automatically proof of operational effectiveness.
+5. **Minimal core:** Preserve service context; evidence-linked operational observations/cases/decisions/actions/verification; durable follow-through for maintenance, recurrence, corrective work and learning. This is conceptual, not a mandate for separate files, tables or modules.
+6. **Evidence rules:** Distinguish observed fact, alert, hypothesis, authorized declaration, mitigation, recovery verification, root-cause conclusion and completion proof. Preserve source, actor, observed vs recorded time where known, freshness, uncertainty, references and traceable corrections. Missing/stale telemetry must not be treated as healthy service. An incident may affect multiple services.
+7. **AI guardrails:** AI may summarize, correlate, propose and draft with provenance; it may not fabricate telemetry, promote hypotheses into facts, assert recovery without evidence, change SLA/SLO, or mark action complete without suitable authorization and proof. Any future delegated automation needs explicit scope and auditability.
+8. **Technology freedom and boundary:** Markdown/Git may be used initially; a structured store, monitoring integration, dashboard, event sourcing and other technologies are NOT decided or mandatory for MVP. OPSLOOP begins after an accepted production release; it can pass verified findings into development but does not become part of ZASS System or own its build/release lifecycle.
 
-**Reason:**
+**Reason:** Candidate C gives clearer truth ownership and avoids recreating external systems; hybrid workspace offers daily usability beyond an incident-first product. Owner explicitly accepted their combination and the stated guardrails.
 
-**Trade-offs:**
+**Trade-offs:** External references can expire or be unavailable; reconciliation, fallback, freshness, cross-service relations and state transitions require further design. OPSLOOP must retain sufficient durable operational decision/evidence context without cloning whole telemetry stores.
 
-**Evidence / experiment:**
+**Evidence / experiment:** Conceptual discovery and owner decision, not implementation evidence.
+- Discovery Task 1: post-production problem and accepted-release / operational-ownership boundary.
+- Discovery Task 2: solo-first users; W-01 through W-09 operational workflows; AI and anti-bureaucracy risks.
+- Discovery Task 3: incident-first, service-first, ledger-first and hybrid comparison; separation of workspace from authority.
+- Discovery Task 4: C-01 through C-06 minimum concepts, evidence/uncertainty rules, three state dimensions and challenge scenarios; Git, structured and federated authority alternatives.
+- Decisions Task 1: three-authority-model assessment, five conceptual challenges and explicit owner approval on 2026-10-08.
 
-**Affected modules:**
+**Affected modules:** Not specified; impacts future product scope, authority model, service/incident/evidence model, AI guardrails, external integration boundaries and architecture challenge.
 
-**Related risks:**
+**Related risks:** Split-brain truth; stale or missing telemetry; false AI assertions; excessive solo-operator overhead; duplicated GitHub/OPSLOOP work; broken external links; premature workflow complexity.
 
-**Related questions:**
+**Related questions:** Exact persistence, state machines, approval mechanics, evidence retention, cross-service case linking, integrations, concurrency, fallback and user surfaces remain OPEN; do not infer technical decisions from D-001.
 
 ---
 
@@ -1082,19 +1100,21 @@ This section is authoritative.
 
 Architecture MUST follow these decisions.
 
-## L-001
+## L-001 — OPSLOOP Product Foundation & Authority Boundaries
 
-**Source Decision:** D-___
+**Source Decision:** D-001
 
-**Decision:**
+**Decision:** Hybrid Lightweight Workspace + Federated Authority, subject to the exact domain ownership, minimum-core, evidence, AI, external-tool and development-boundary conditions recorded under D-001.
 
-**Reason:**
+**Reason:** Solo-first operational usability without sacrificing evidence integrity or duplicating external monitoring, delivery and engineering systems. Owner approved explicitly after Discovery Tasks 1–4 and Decisions Task 1 review.
 
 **Locked by:** Project Owner
 
-**Date:**
+**Date:** 2026-10-08
 
 **Supersedes:** None
+
+**Implementation authorization:** None. No code, architecture confirmation or technical-stack selection is authorized by this lock.
 
 ---
 
