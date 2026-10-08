@@ -1094,6 +1094,55 @@ Every important architectural decision must appear here.
 
 ---
 
+## D-002 — Operational Authority Invariants & Conflict Resolution Rules
+
+**Status:** REVISED PROPOSAL — NOT LOCKED
+**Revision approved by:** Project Owner, 2026-10-08 (Challenge Round 2)
+**Approval scope:** Approval of the proposed revision only. Explicitly NOT approval to LOCK, implement, or begin Draft Architecture.
+**Depends on:** D-001 / L-001 (LOCKED). Does not amend D-001.
+
+**Problem:** Prevent contradictory monitoring, OPSLOOP, GitHub and AI assertions from silently becoming authoritative operational facts or conflicting production commands.
+
+**Proposed invariants (not authoritative until separately LOCKED):**
+- **INV-01 — Explicit domain authority:** Every authoritative operational field/decision has an identified authority owner; external source domains are not silently absorbed.
+- **INV-02 — Evidence is not interpretation:** Observations, alerts, hypotheses, declarations and findings retain distinct epistemic types.
+- **INV-03 — Unknown remains unknown:** Missing, stale, partial or inaccessible evidence cannot be treated as positive healthy evidence.
+- **INV-04 — Authorized actor required:** Protected decisions and state transitions require appropriate authorization.
+- **INV-05 — Recovery needs verification:** Alert cessation or completed restart/rollback alone never proves recovery.
+- **INV-06 — Resolution is not corrective completion:** Incident resolution does not close root-cause investigation or verified corrective follow-through automatically.
+- **INV-07 — Traceable changes:** Material state/decision corrections preserve actor, times, rationale, evidence and previous claims.
+- **INV-08 — One designated authority per state:** Avoid competing authoritative completion/status records; external evidence may inform derived views.
+- **INV-09 — No AI authority promotion by default:** AI may propose and correlate but may not silently confirm facts, recovery, commitments or completion.
+- **INV-10 — Conflicts remain visible:** Preserve conflicting claims/provenance until authorized resolution; never resolve by silent overwrite.
+- **INV-11 — Authority scoped, time-bound and revocable:** Authorization is contextual to subject, operation and effective time; late/revoked commands do not override current state by arrival order.
+- **INV-12 — Evidence validity contextual and time-sensitive:** Preserve provenance, integrity, freshness, scope and availability; historical truth is not proof of current health without revalidation. No universal expiry period.
+- **INV-13 — Emergency authority bounded and retrospectively accountable:** Pre-established/scoped legitimate emergency authority or lawful manual recovery procedure; constrain action to need, capture actual timestamps and reasons when feasible, and review afterwards. No blanket bypass or autonomous AI privilege escalation. OPSLOOP outage must not prevent otherwise authorized emergency recovery.
+- **INV-14 — Conflicting commands require one effective decision authority and coordination:** Distinguish opinion, decision and execution authority; contain incompatible concurrent changes where safe/feasible, with urgent legitimate recovery preserved.
+
+**Revised proposed conflict protocol:**
+1. **DETECT:** Identify contradictory evidence, decisions, permissions or commands.
+2. **PRESERVE:** Retain both claims, provenance, observed/recorded times and original context.
+3. **CLASSIFY:** Distinguish evidence, authority, freshness, scope and execution conflicts.
+4. **CONTAIN:** Prevent incompatible changes when safe and feasible; do not block authorized urgent recovery.
+5. **EVALUATE:** Check current scoped authorization, relevance, evidence integrity/freshness and risk.
+6. **RESOLVE / ESCALATE:** Record actor, grounds and disposition; retain unresolved/unknown where evidence or authority is insufficient.
+7. **RECONCILE:** Update derived state without rewriting historical evidence or remote source authority.
+
+**Protected transitions proposed:** Suspected→declared incident; suspected cause→confirmed finding; mitigation attempted→effective; degraded→recovered; responding→resolved; corrective work→verified complete; engineering done→operationally verified; commitment draft→effective; conflict open→resolved. Exact state enums and enforcement are not yet selected.
+
+**Challenge findings / lineage:**
+- Discovery Task 4: six minimal concepts, provenance and three state dimensions; authority alternatives.
+- D-001/L-001: locked federated authority and product foundation.
+- Decisions Task 2 first proposal: INV-01–INV-10 and the original six-step conflict protocol.
+- Challenge Round 2: revoked/stale authority, context-dependent evidence decay, emergency break-glass misuse/OPSLOOP outage, contradictory operator instructions, delayed records and historical corrections.
+- Owner approval on 2026-10-08: retain INV-01–INV-10, add INV-11–INV-14 and insert CONTAIN into seven-step protocol; expressly defer LOCK and coding.
+
+**Trade-offs / outstanding challenges:** Avoid rigid enterprise roles and forensic burden for solo users. Details of role/delegation checks, offline reconciliation, authority succession, concurrent execution coordination, evidence retention/freshness thresholds, and integration fallbacks stay OPEN. This proposal is not a final state machine, storage schema or permission implementation.
+
+**Implementation authorization:** NONE. No code, technology choice, architecture approval or LOCK is implied by this revision.
+
+---
+
 # 13. LOCKED DECISIONS
 
 This section is authoritative.
