@@ -1,0 +1,53 @@
+name: OPSLOOP ZASS Validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  zass-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout OPSLOOP history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch pinned Full ZASS validator
+        shell: bash
+        run: |
+          git clone https://github.com/dzuddiyn/ZASS-Zero-to-Architecture-Structured-Sprint.git "$RUNNER_TEMP/zass-source"
+          git -C "$RUNNER_TEMP/zass-source" checkout --detach 94083e888d5a676fb54967405a8ebb9ad15c6c3b
+
+      - name: Determine historical baseline
+        id: baseline
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASELINE_REF="$PR_BASE_SHA"
+          elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BEFORE" && ! "$PUSH_BEFORE" =~ ^0+$ ]]; then
+            BASELINE_REF="$PUSH_BEFORE"
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            BASELINE_REF="$(git rev-parse HEAD^)"
+          else
+            BASELINE_REF="$(git rev-parse HEAD)"
+          fi
+          git cat-file -e "${BASELINE_REF}^{commit}"
+          echo "ref=$BASELINE_REF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate OPSLOOP Full ZASS
+        run: node "$RUNNER_TEMP/zass-source/cli/bin/zass.js" check --baseline "${{ steps.baseline.outputs.ref }}"
