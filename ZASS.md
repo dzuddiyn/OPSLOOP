@@ -1538,3 +1538,20 @@ Example: `AC-001 = modular monolith` and `AC-002 = microservices` are alternativ
 ---
 
 # END OF ZASS BASELINE
+
+
+---
+
+## OPSLOOP PROJECT STATE SYNC — 2026-10-09 (DA-T29A)
+
+**Record type:** Project-specific factual progress / authorization boundary; **NOT** a ZASS method version change, new architecture decision, or new LOCK.
+
+- **Current stage:** Architecture candidate v0.7 DRAFT, following PRE-ARCH v0.5 conditionally owner-approved 2026-10-08. Existing LOCKED decisions D-001/L-001 and D-002/L-002 unchanged.
+- **Integration target:** Owner-approved in DA-T15: standalone Web UI, source-aware monitoring/notifications, bounded synthetic assurance and reporting, required Home Assistant integration compatibility without HA runtime dependency; phased delivery remains conceptual. **UI-D01 owner-LOCKED in conversation at DA-T16**: standalone OPSLOOP UI; Uptime Kuma is an external monitoring integration, not the primary UI. This is historical decision transcription, not a new LOCK.
+- **Proof work:** FP-01 transactional persistence (paper specification READY, NOT RUN); FP-02 authority enforcement (REVISION REQUIRED/BLOCKED pending real route and credentials); FP-03 Uptime Kuma /metrics (BLOCKED pending actual disposable provider evidence). No proof PASS recorded.
+- **Gate A:** Explicit owner approval DA-T24-AUTH-001 for **disposable proof preparation only**. DA-T25–DA-T28 prepared proof manifests/scaffolds in conversation artifacts, not live acceptance proofs. DA-T29 checked available remote host and found Docker/Python not available.
+- **DA-T29A — current blocker:** Read-only preflight of authorized Windows host LAPTOP-DBGSGIEI; proposed host change **CHG-DA29A-01** (WSL2 + Docker Desktop + Python 3.12) **PENDING separate explicit owner approval**. No installation, host restart or proof execution authorized by current request.
+- **Gate B:** NOT AUTHORIZED; production application coding, deployment, new architecture LOCK and architecture confirmation NOT AUTHORIZED.
+- **Project execution authority:** See [ACTION_PLAN.md](ACTION_PLAN.md) for live task statuses, PB02-C1/C2, PB03-C1–C3, safety and next owner action; no independent execution ledger should override ZASS decisions.
+
+**NEXT EXACTLY ONE:** Owner decision on CHG-DA29A-01 host change. Until approval, only read-only compatibility checks and documentation; do not run FP-01–FP-03.
