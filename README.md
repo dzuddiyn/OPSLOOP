@@ -4,7 +4,7 @@
 
 A lightweight, solo-first workspace for operating services **after a production release is accepted**. OPSLOOP helps track service health, incidents, recovery evidence, preventive maintenance, corrective follow-through, and lessons learned.
 
-> **Project status:** PRE-ARCH v0.5 — **conditionally approved** (8 October 2026). Architecture **not confirmed**; implementation and coding **not authorized**.
+> **Project status (9 October 2026):** PRE-ARCH v0.5 **conditionally approved**; architecture candidate v0.7 **DRAFT**. DA-T29A host-enable planning is **approval pending**. Gate A **disposable proof preparation approved only**; Gate B and product coding **NOT AUTHORIZED**. See [ACTION_PLAN.md](ACTION_PLAN.md).
 
 ## What OPSLOOP does
 
@@ -28,7 +28,7 @@ These are **logical requirements, not selected technologies or implemented featu
 
 ## Documents
 
-- [PRE_ARCH.md](PRE_ARCH.md) — Owner-approved **conditional** PRE-ARCH v0.5 candidate, contracts, scenarios, open choices, and lineage.
+- [ACTION_PLAN.md](ACTION_PLAN.md) — Current DA-T29A host-change gate, FP-01–FP-03 readiness, Gate A/Gate B boundaries and remaining prerequisite evidence.\n- [PRE_ARCH.md](PRE_ARCH.md) — Owner-approved **conditional** PRE-ARCH v0.5 candidate, contracts, scenarios, open choices, and lineage.
 - [ZASS.md](ZASS.md) — Development methodology and authoritative **LOCKED** decisions D-001/L-001 and D-002/L-002.
 - [ZASS CI workflow](.github/workflows/zass.yml) — Repository documentation/method validation; passing CI does **not** prove operational architecture or product readiness.
 
@@ -38,7 +38,7 @@ These are **logical requirements, not selected technologies or implemented featu
 
 **Not required for initial MVP:** automated monitoring or GitHub synchronization, autonomous AI operational decisions, enterprise approval chains, and distributed workflow infrastructure.
 
-**Still OPEN:** persistence, exact schema and state transitions, identity/credential enforcement, retry/concurrency mechanisms, evidence retention, integrations, user interface, hosting, and recovery implementation. See [PRE_ARCH.md](PRE_ARCH.md).
+**Still OPEN:** Production persistence, exact schema and state transitions, identity/credential enforcement, retry/concurrency mechanisms, evidence retention, integration implementations, hosting and recovery. Standalone Web UI + external Uptime Kuma integration is the owner-locked **UI-D01 design direction (not implementation)**. See [PRE_ARCH.md](PRE_ARCH.md) and [ACTION_PLAN.md](ACTION_PLAN.md).
 
 ## Safety and contributions
 
